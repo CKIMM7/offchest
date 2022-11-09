@@ -1,6 +1,7 @@
 console.log('index.js')
 let lastElementArray = '';
 
+const body = document.querySelector('body');
 const formBtn = document.querySelector('.formBtn');
 const postsSection = document.querySelector('.postsSection');
 const formSection = document.querySelector('.formSection');
@@ -34,6 +35,7 @@ async function test1 (e) {
         postId: uniqueId(),
         title: inputTitle.value,
         body: inputBody.value,
+        name: inputName.value,
         date: getDate()
     }
 
@@ -64,19 +66,23 @@ function displayOnePost (data) {
 
     console.log(data)
     let title = data.title;
+    let name = data.name;
     let story = data.body;
     let date = data.date;
+
     
     const li = document.createElement('li');
     const titleParag = document.createElement('p');
+    const nameParag = document.createElement('p');
     const storyParag = document.createElement('p');
     const dateParag = document.createElement('p');
 
     titleParag.textContent = title;
+    nameParag.textContent = name;
     storyParag.textContent = story;
     dateParag.textContent = date;
 
-    li.append(titleParag, storyParag, dateParag)
+    li.append(titleParag, storyParag, dateParag, nameParag)
     ul.append(li)
     console.log(li)
 
@@ -138,17 +144,15 @@ function displayGlobal() {
 
         })
         .catch((err) => {
-        formSection.hidden=false;
-        postsSection.hidden=true;
+
+        body.append(formSection)
+        postsSection.remove()
 
         })
-
-        console.log('idpage only')
+        
     } else {
-
-        console.log('landing')
-        formSection.hidden=false;
-        postsSection.hidden=true;
+        body.append(formSection)
+        postsSection.remove()
     }
 
 }
