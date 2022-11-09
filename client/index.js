@@ -6,6 +6,8 @@ const formBtn = document.querySelector('.formBtn');
 const postsSection = document.querySelector('.postsSection');
 const formSection = document.querySelector('.formSection');
 const ul = document.querySelector('.postsContainer');
+const error = document.querySelector('#error');
+
 
 const inputTitle = document.querySelector('#title');
 const inputName = document.querySelector('#name');
@@ -128,28 +130,39 @@ async function submitPost(data) {
     })
 }
 
+function postNotExist () {
+
+    let p = document.createElement('p');
+    p.textContent = `this postId does not exist: ${window.location.href.slice(22)}`;
+    error.append(p);
+
+    setTimeout(() => {
+        p.remove()
+    }, 2000);
+
+    return
+}
+
 function displayGlobal() {
 
     let postId = '';
     const currentUrl = window.location.href;
-    //console.log(currentUrl)
+    console.log(currentUrl.length)
     //console.log(currentUrl.slice(22))
 
-    if (currentUrl.length > 16) {
+    if (currentUrl.length > 22) {
 
         getOnePost(currentUrl.slice(22)).then(res => {
-        console.log(res)
-
-        displayOnePost(res)
+            console.log(res)
+            displayOnePost(res)
 
         })
         .catch((err) => {
-
-        body.append(formSection)
-        postsSection.remove()
-
+            postNotExist()
+            body.append(formSection)
+            postsSection.remove()
         })
-        
+
     } else {
         body.append(formSection)
         postsSection.remove()
