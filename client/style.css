@@ -1,0 +1,17 @@
+* {
+    box-sizing: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+html { 
+    background: url(/images/background/landing_page_background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+p {
+    color: blue;
+}
