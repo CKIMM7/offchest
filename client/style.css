@@ -21,7 +21,7 @@ body {
 }
 
 .formSection {
-    width: 50%;
+    width: 30%;
 }
 
 .formSection form {
@@ -85,7 +85,7 @@ body {
 }
 
 .postsSection {
-    width: 50%;
+    width: 30%;
 }
 
 .postsSection ul {
@@ -93,8 +93,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 }
 
 .postsSection ul li {
