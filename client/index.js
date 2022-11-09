@@ -48,9 +48,6 @@ async function test1 (e) {
         //url path changes then trigger displayGlobal
         window.location.href = `http://localhost:3000/${lastElementArray.postId}`;
     })
-
-    //window.location.href = `http://localhost:3000/asdf`;
-
 }
 
 async function getOnePost(postId) {
