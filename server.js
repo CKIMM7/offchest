@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use('/', express.static(path.join(__dirname, 'client')));
 
-let reqPath = path.join(__dirname, '/client');
+let reqPath = path.join(__dirname, '/client/index.html');
 let errorPath = path.join(__dirname, '/client');
 
 
@@ -24,13 +24,30 @@ console.log(reqPath)
 
 app.get('/', (req, res)=> {
     console.log('/')
+    res.send('file for error')
+});
+
+app.get('/:id', (req, res)=> {
+    //console.log(`req.params.id`)
+    console.log(req.params.id)
+
+    const postIdSearch = postsData.findIndex(post => {
+        return post.postId === req.params.id;
+    })
+
+    console.log(postIdSearch);
     res.sendFile(reqPath)
+});
+
+app.get('/posts', (req, res)=> {
+    console.log('/')
+    res.send(postsData)
 });
 
 //Users should be able to view other peoples' entries. (2)
 //working so far
 
-app.get('/:id', (req, res)=> {
+app.get('/posts/:id', (req, res)=> {
     const postIdSearch = postsData.findIndex(post => {
         return post.postId.toString() === req.params.id;
     })
@@ -45,14 +62,13 @@ app.get('/:id', (req, res)=> {
 app.post('/posts', (req, res)=> {
     
     let postToAdd = req.body;
-    postToAdd.postId = uniqueId();
+    //postToAdd.postId = uniqueId();
     postToAdd.date = getDate();
 
     postsData.push(postToAdd);
     updateJSON('db/posts.json', postsData);
 
     res.send(postsData);
-
 });
 
 //Users should be able to comment on other people’s entries. (5)
