@@ -18,7 +18,9 @@ frontend logic was rewritten for the project
 
 
 ***Bugs***<br>
-User inputs do not get cleared upon sending a post request
+its not a bug but would like to user inputs to be cleared when going back.
+ive tried .textcontent = ''; does not work
+htmlelement.reset(); does not work 
 
 
 ***Wins & Challenges***<br>
