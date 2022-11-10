@@ -18,7 +18,7 @@ let errorPath = path.join(__dirname, '/client');
 
 
 const { uniqueId, getDate, updateJSON } = require('./functions');
-const postsData = require('./db/posts.json');
+const postsData = require('./dbj/posts.json');
 
 console.log(reqPath)
 
