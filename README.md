@@ -34,5 +34,9 @@ backend logic is the same as our previous projects
 challenges:
 had trouble matching the path with the server&client side using displayGlobal function
 
+questions:
+why json files get greyed out if folder name is db, which is why i changed to db
+heroku somehow thinks this is a node module...
+
 
 
